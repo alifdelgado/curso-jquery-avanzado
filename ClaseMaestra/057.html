@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Algún texto</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nisi, earum officiis iste provident impedit voluptate, officia porro, sapiente beatae quod asperiores possimus quia neque dignissimos incidunt quam rem. Vero?</p>
+        <div class="row">
+            <input type="text" class="form-control col-sm-4" id="input1">
+            <input type="text" class="form-control col-sm-4" id="input2">
+            <input type="text" class="form-control col-sm-4" id="input3">
+        </div>
+        <p class="lipsum">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="lipsum">Vitae dolores vero tenetur eveniet modi exercitationem ipsum totam sint!</p>
+        <p class="lipsum">Deleniti eius odit ullam excepturi praesentium ipsa repellendus possimus exercitationem pariatur dignissimos?</p>
+        <p class="lipsum">Temporibus esse illo unde cum perspiciatis laudantium dolore, omnis obcaecati minus commodi quidem dolorem!</p>
+        <p class="lipsum">Esse blanditiis repellat commodi exercitationem quae molestiae reiciendis nisi impedit laborum beatae laudantium, molestias praesentium distinctio.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $('input[type=text]').val(function(){
+            return this.id;
+        });
+
+        let p = $('.lipsum');
+        
+        p.filter(function(){
+            return $(this).text().match(/lorem/i)!=null;
+        }).hide();
+
+        p = p.filter(':visible');
+
+        p.prepend(function(index){
+            return (index+1) + ") ";
+        });
+
+        p.css('color', function(index){
+            return index%2 == 1 ? 'blue' : 'green';
+        });
+
+        p.html(function(){
+            let contenido = $(this).text();
+            if(contenido.length>40){
+                return contenido.slice(0, 40) + '...';
+            }
+        });
+
+        console.log('primer parrafo en verde: ', p.first().is(function(){
+            return $(this).css('color').match(/green|rgb\(0, 128, 0\)|#00FF00/i);
+        }));
+    </script>
+</body>
+</html>

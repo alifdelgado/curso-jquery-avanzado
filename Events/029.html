@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Algún texto</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nisi, earum officiis iste provident impedit voluptate, officia porro, sapiente beatae quod asperiores possimus quia neque dignissimos incidunt quam rem. Vero?</p>
+        <div id="holder">
+            <button type="button" class="btn btn-primary" id="boton1">1</button>
+            <button type="button" class="btn btn-primary" id="boton2">2</button>
+            <button type="button" class="btn btn-primary" id="boton3">3</button>
+            <button type="button" class="btn btn-primary" id="boton4">4</button>
+            <button type="button" class="btn btn-danger" id="boton5" style="float: right;">Limpiar</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        let boton1 = $('#boton1'),
+            boton2 = $('#boton2'),
+            boton3 = $('#boton3'),
+            boton4 = $('#boton4'),
+            boton5 = $('#boton5');
+
+        boton1.on('click', function(){
+            console.log('click');
+        });
+
+        boton2.on('mouseenter mouseleave', function(){
+            console.log('entró mouse / salió mouse');
+        });
+
+        boton3.on('click', Math.random(Math.random()*20), function(e){
+            console.log('el numero random es: ', e.data);
+        });
+
+        boton4.on('click.temp', function(){
+            console.log('temp disparado');
+        });
+
+        boton5.on('click', function(){
+            console.clear();
+            $('button').off('.temp');
+            console.log('eventos de los botones temp han sido eliminados');
+        });
+    </script>
+</body>
+</html>
